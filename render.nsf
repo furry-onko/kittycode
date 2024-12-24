@@ -1,1 +1,50 @@
+nekoscript ver 1.5
 
+from render import terrain as tr;
+
+>>main {
+	float x, y, z = 0;
+	int terrainX, terrainY = 1000;
+	tr.setterrain(terrainX, terrainY);
+	tr.color(
+		#pattern {
+			for (i = 0, i = 10, i++) {
+				if (i %% 2 == 0) {
+					<argument> 1, color:rgba(255, 255, 255, 0.33);
+				}
+				else {
+					<argument> 2, color:rgba(0, 0, 0, 0.33);
+				}
+			}
+		}
+	);
+	f camera() {
+		tr.cameraSettings(
+			psspeed:100;
+			fov:60;
+		);
+		doc.keywordListener( <key>,
+			until (key == "uarr") {
+				tr.cameraMove("UP");
+			}
+			until (key == "darr") {
+				tr.cameraMove("DOWN");
+			}
+			until (key == "larr") {
+				tr.cameraMove("LEFT");
+			}
+			until (key == "rarr") {
+				tr.cameraMove("RIGHT");
+			}
+			until (key == "spacebar") {
+				tr.cameraMove("TOP");
+			}
+			until (key == "lshift") {
+				tr.cameraMove("BOTTOM");
+			}
+			else {
+				wait;
+			}
+		);
+	}
+}
