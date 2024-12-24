@@ -1,8 +1,7 @@
 nekoscript ver 1.5
-/**
- * 3D EDITING SOFTWARE
-**/
+
 from render import terrain as tr;
+from render import seethr as se;
 
 >>main {
 	float x, y, z = 0;
@@ -21,28 +20,28 @@ from render import terrain as tr;
 		}
 	);
 	f camera() {
-		tr.cameraSettings(
+		se.cameraSettings(
 			psspeed:100;
 			fov:60;
 		);
 		doc.keywordListener( <key>,
 			until (key == "uarr") {
-				tr.cameraMove("UP");
+				se.cameraMove("UP");
 			}
 			until (key == "darr") {
-				tr.cameraMove("DOWN");
+				se.cameraMove("DOWN");
 			}
 			until (key == "larr") {
-				tr.cameraMove("LEFT");
+				se.cameraMove("LEFT");
 			}
 			until (key == "rarr") {
-				tr.cameraMove("RIGHT");
+				se.cameraMove("RIGHT");
 			}
 			until (key == "spacebar") {
-				tr.cameraMove("TOP");
+				se.cameraMove("TOP");
 			}
 			until (key == "lshift") {
-				tr.cameraMove("BOTTOM");
+				se.cameraMove("BOTTOM");
 			}
 			else {
 				wait;
